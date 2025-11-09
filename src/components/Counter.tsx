@@ -16,11 +16,6 @@ function reducer(state: number, action: Action): number {
   }
 }
 
-/**
- * Local counter using useReducer.
- * This will naturally reset on unmount.
- * Additionally, we force-unmount Home on logout via sessionKey flip.
- */
 const Counter = () => {
   const [count, dispatch] = useReducer(reducer, 0);
 

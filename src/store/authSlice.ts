@@ -7,7 +7,6 @@ type User = {
 type AuthState = {
   isAuthenticated: boolean;
   user: User | null;
-  // A simple key to force-remount Home (so the local counter resets on logout)
   sessionKey: number;
 };
 
@@ -24,13 +23,11 @@ const authSlice = createSlice({
     loginSucceeded: (state, action: PayloadAction<User>) => {
       state.isAuthenticated = true;
       state.user = action.payload;
-      // Keep sessionKey same on login
     },
     logout: (state) => {
-      // Reset everything
       state.isAuthenticated = false;
       state.user = null;
-      state.sessionKey += 1; // flips the key so Home unmounts -> counter resets
+      state.sessionKey += 1;
     }
   }
 });
